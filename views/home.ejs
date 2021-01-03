@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../public/css/home.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Estacionamento <small>by: Pedro</small></h1>
+        </header>
+        <section id="cadastro">
+            <form action="/home" method="POST">
+                <label for="modelo">Modelo</label>
+                <input type="text" name="modelo" id="modelo" placeholder="Digite o nome do veículo..." required autocomplete="off">
+                <label for="placa">Placa</label>
+                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo..." required autocomplete="off">
+                <button type="submit" id="btn-cadastrar">Cadastrar</button>
+            </form>
+        </section>
+        <section id="show-cars">
+            <div class="titles">
+                <p>Modelo</p>
+                <p>Placa</p>
+                <p>Entrada</p>
+                <p>Finalizar</p>
+            </div>
+            <hr>
+            <% for(let i = 0; i < placas.length; i++){ %>
+                <div class="conteudo">
+                    <p><%= modelos[i] %></p>
+                    <p><%= placas[i] %></p>
+                    <p><%= horarios[i] %></p>
+                    <p>Finalizar</p>
+                </div>
+            <% } %> 
+        </section>
+    </div>
+</body>
+</html>
