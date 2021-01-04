@@ -16,17 +16,14 @@ app.get('/home', (req, res) => {
         let modelos = []
         let placas = []
         let horarios = []
+        let ids = []
         for (let i in veiculos) {
             modelos.push(veiculos[i].modelo)
             placas.push(veiculos[i].placa)
             horarios.push(veiculos[i].horario)
+            ids.push(veiculos[i]._id)
         }
-
-        let horarioFormat = []
-        for (let i in horarios) {
-            horarioFormat.push(`${horarios[i].getHours()}:${horarios[i].getMinutes()}`)
-        }
-        res.render('../views/home', { modelos: modelos, placas: placas, horarios: horarioFormat })
+        res.render('../views/home', { ids: ids, modelos: modelos, placas: placas, horarios: horarios })
     }).catch(err => {
         console.log(err)
     })

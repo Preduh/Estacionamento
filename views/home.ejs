@@ -14,9 +14,9 @@
         <section id="cadastro">
             <form action="/home" method="POST">
                 <label for="modelo">Modelo</label>
-                <input type="text" name="modelo" id="modelo" placeholder="Digite o nome do veículo..." required autocomplete="off">
+                <input type="text" name="modelo" id="modelo" placeholder="Digite o nome do veículo..." required autocomplete="off" maxlength="15">
                 <label for="placa">Placa</label>
-                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo..." required autocomplete="off">
+                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo..." required autocomplete="off" maxlength="8">
                 <button type="submit" id="btn-cadastrar">Cadastrar</button>
             </form>
         </section>
@@ -33,7 +33,9 @@
                     <p><%= modelos[i] %></p>
                     <p><%= placas[i] %></p>
                     <p><%= horarios[i] %></p>
-                    <p>Finalizar</p>
+                    <form action="/finalizar/<%= ids[i] %>"method="POST">
+                        <p><button id="btn-finalizar">Finalizar</button></p>
+                    </form>
                 </div>
             <% } %> 
         </section>

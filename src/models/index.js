@@ -4,16 +4,16 @@ const veiculoSchema = new mongoose.Schema({
     modelo: {
         type: String,
         require: true,
-        lowercase: true
+        uppercase: true
     },
     placa: {
         type: String,
         require: true,
-        unique: true
+        unique: true,
+        uppercase: true
     },
     horario: {
-        type: Date,
-        default: Date.now()
+        type: String
     }
 })
 
