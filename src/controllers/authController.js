@@ -2,12 +2,16 @@ const express = require('express')
 const Veiculo = require('../models/index')
 const router = express.Router()
 
-router.post('/home', async (req, res) => {
+router.get('/home', async (req, res) => {
+    res.render('../views/home')
+})
+
+router.post('/estacionamento', async (req, res) => {
     const { placa } = req.body
 
     try {
         if (await Veiculo.findOne({ placa })) {
-            return res.redirect('/home')
+            return res.redirect('/estacionamento')
         }
 
         let now = new Date
@@ -24,10 +28,15 @@ router.post('/home', async (req, res) => {
             placa: req.body.placa,
             horario: horario
         })
-        res.redirect('/home')
+        res.redirect('/estacionamento')
     } catch (err) {
         return res.send('Registro falhou!')
     }
+})
+
+router.post('/search', async (req, res) => {
+    const search = req.body.search
+    res.redirect('/estacionamento/'+ search)
 })
 
 router.post('/finalizar/:id', async (req, res) => {
@@ -37,7 +46,7 @@ router.post('/finalizar/:id', async (req, res) => {
         return res.send('Erro ao apagar')
     }
 
-    return res.redirect('/home')
+    return res.redirect('/estacionamento')
 })
 
 module.exports = app => app.use(router)

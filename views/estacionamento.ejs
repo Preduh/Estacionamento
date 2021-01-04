@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estacionamento</title>
+    <link rel="stylesheet" href="../public/css/estacionamento.css">
+    <link rel="stylesheet" href="../public/css/home.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <div class="container">
+        <header>
+            <h1>Estacionamento <small>by: Pedro</small></h1>
+            <form action="/search" method="POST">
+                <input type="text" name="search" id="search" autocomplete="off" placeholder="Buscar placas">
+                <button type="submit"><img src="../public/img/search-solid-white.png"></button>
+            </form>
+        </header>
+        <section id="cadastro">
+            <form action="/estacionamento" method="POST">
+                <label for="modelo">Modelo</label>
+                <input type="text" name="modelo" id="modelo" placeholder="Digite o nome do veículo..." required autocomplete="off" maxlength="15" autofocus>
+                <label for="placa">Placa</label>
+                <input type="text" name="placa" id="placa" placeholder="Digite a placa do veículo..." required autocomplete="off" maxlength="8">
+                <button type="submit" id="btn-cadastrar">Cadastrar</button>
+            </form>
+        </section>
+        <section id="show-cars">
+            <div class="titles">
+                <p>Modelo</p>
+                <p>Placa</p>
+                <p>Entrada</p>
+                <p>Finalizar</p>
+            </div>
+            <hr>
+            <% for(let i = 0; i < placas.length; i++){ %>
+                <div class="conteudo">
+                    <p><%= modelos[i] %></p>
+                    <p><%= placas[i] %></p>
+                    <p><%= horarios[i] %></p>
+                    <form action="/finalizar/<%= ids[i] %>"method="POST">
+                        <p><button id="btn-finalizar">Finalizar</button></p>
+                    </form>
+                </div>
+            <% } %> 
+        </section>
+    </div>
+</body>
+</html>
