@@ -16,7 +16,6 @@ app.use('/public', express.static('public'))
 require('./controllers/authController')(app)
 
 // Definindo conexão
-const port = 8081
-app.listen(port, () => {
+app.listen(process.env.PORT || 8081, () => {
     console.log('Conectado com sucesso!')
 })
