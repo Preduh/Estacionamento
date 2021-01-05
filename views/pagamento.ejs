@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="../public/css/pagamento.css">
+</head>
+<body>
+    <%- include ('partials/navbar') %>
+    <div class="container">
+        <form action="/pagamento/<%= idDelete %>" method="POST">
+            <p>Modelo: <%= veiculoAtual[0] %></p>
+            <p>Placa: <%= veiculoAtual[1] %></p>
+            <p>Valor a pagar:</p>
+            <button type="submit">Realizar pagamento</button>
+        </form>
+    </div>
+</body>
+</html>
+
